@@ -9,6 +9,7 @@ metadata:
     - automation
     - demo
   annotations:
+    backstage.io/source-location: url:https://github.com/balajisiva/rhdh-mcp-demo
     backstage.io/kubernetes-id: user-api-client
     backstage.io/kubernetes-namespace: demo-app
     backstage.io/techdocs-ref: dir:.
