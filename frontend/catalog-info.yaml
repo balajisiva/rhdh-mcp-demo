@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: user-management-frontend
+  description: Frontend React application for user management demo
+  tags:
+    - react
+    - frontend
+    - web
+    - demo
+  annotations:
+    backstage.io/kubernetes-id: user-management-frontend
+    backstage.io/kubernetes-namespace: demo-app
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  lifecycle: production
+  owner: platform-team
+  consumesApis:
+    - user-api
+  dependsOn:
+    - component:user-api-backend

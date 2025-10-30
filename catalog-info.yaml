@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: demo
+  description: Demo application domain
+spec:
+  owner: platform-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: demo-app
+  description: User Management Demo Application - Simple demo with Frontend, Backend, and Client Service
+  tags:
+    - demo
+    - microservices
+spec:
+  owner: platform-team
+  domain: demo

@@ -1,0 +1,52 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: user-api-backend
+  description: Backend API service for user management demo
+  tags:
+    - api
+    - nodejs
+    - backend
+    - demo
+  annotations:
+    backstage.io/kubernetes-id: user-api-backend
+    backstage.io/kubernetes-namespace: demo-app
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: production
+  owner: platform-team
+  providesApis:
+    - user-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: user-api
+  description: User Management API
+spec:
+  type: openapi
+  lifecycle: production
+  owner: platform-team
+  definition: |
+    openapi: "3.0.0"
+    info:
+      title: User Management API
+      version: "1.0.0"
+    paths:
+      /api/users:
+        get:
+          summary: Get all users
+          responses:
+            "200":
+              description: List of users
+      /api/users/{id}:
+        get:
+          summary: Get user by ID
+        put:
+          summary: Update user
+        delete:
+          summary: Delete user
+      /health:
+        get:
+          summary: Health check endpoint

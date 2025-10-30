@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-api-client
+  namespace: demo-app
+  labels:
+    app: user-api-client
+    service: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-api-client
+  template:
+    metadata:
+      labels:
+        app: user-api-client
+        service: client
+    spec:
+      containers:
+      - name: client
+        image: user-api-client:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: API_URL
+          value: "http://user-api-backend-service:3000"
+        - name: INTERVAL
+          value: "10000"
